@@ -51,6 +51,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="Sign In"
+        android:onClick="SignIn"
         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
     <TextView
