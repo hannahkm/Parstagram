@@ -161,5 +161,6 @@ public class NewPostActivity extends AppCompatActivity {
                 }
             }
         });
+        finish();
     }
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_gray"
     tools:context=".NewPostActivity">
 
     <ImageView
@@ -32,6 +33,7 @@
         android:gravity="start|top"
         android:hint="Write your caption here"
         android:inputType="textMultiLine"
+        android:textColor="@color/light_gray"
         android:visibility="visible" />
 
     <Button
@@ -41,6 +43,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
+        android:textColor="@color/light_gray"
         android:text="Post" />
 
     <ImageView
