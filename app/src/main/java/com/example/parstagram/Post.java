@@ -18,6 +18,7 @@ public class Post extends ParseObject {
     public static String KEY_DESCRIPTION = "Description";
     public static String KEY_IMAGE = "Image";
     public static String KEY_USER = "User";
+    public static String KEY_LIKES = "numLikes";
 
 
     public String getDescription() {
@@ -42,6 +43,18 @@ public class Post extends ParseObject {
 
     public void setUser(ParseUser parseUser){
         put(KEY_USER, parseUser);
+    }
+
+    public int getNumLikes(){
+        int likes = getInt(KEY_LIKES);
+        Log.i("likes", String.valueOf(likes));
+        if (likes == 0){
+            int num_likes = (int)Math.floor(Math.random()*(101)+1);
+            put(KEY_LIKES, num_likes);
+            return num_likes;
+        } else {
+            return likes;
+        }
     }
 
     public String getTimeStamp() {

@@ -21,11 +21,11 @@ import org.parceler.Parcels;
 
 import java.util.List;
 
-public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
+public class GridPostAdapter extends RecyclerView.Adapter<GridPostAdapter.ViewHolder> {
     private Context context;
     private List<Post> posts;
 
-    public PostsAdapter(Context context, List<Post> posts) {
+    public GridPostAdapter(Context context, List<Post> posts) {
         this.context = context;
         this.posts = posts;
     }
@@ -33,7 +33,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_user_post, parent, false);
         return new ViewHolder(view);
     }
 
@@ -61,17 +61,11 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvUsername;
         ParseImageView ivImage;
-        TextView tvDescription;
-        TextView tvNumLikes;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
-            tvDescription = itemView.findViewById(R.id.tvDescription);
-            tvNumLikes = itemView.findViewById(R.id.tvNumLikes);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -87,15 +81,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
         public void bind(Post post) {
             // Bind the post data to the view elements
-            String username = post.getUser().getUsername();
-            String description = "<b>" + username + "</b> " + post.getDescription();
-            tvDescription.setText(Html.fromHtml(description));
-            tvUsername.setText(username);
-            tvNumLikes.setText(post.getNumLikes() + " likes");
             ParseFile image = post.getImage();
             if (image != null) {
-//                ivImage.setParseFile(image);
-//                ivImage.loadInBackground();
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
         }

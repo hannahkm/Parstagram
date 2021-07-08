@@ -3,6 +3,7 @@ package com.example.parstagram;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Html;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -16,6 +17,7 @@ public class DetailsActivity extends AppCompatActivity {
     ParseImageView ivImage;
     TextView tvDescription;
     TextView tvTimestamp;
+    TextView tvNumLikes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +28,10 @@ public class DetailsActivity extends AppCompatActivity {
         ivImage = findViewById(R.id.ivImage);
         tvDescription = findViewById(R.id.tvDescription);
         tvTimestamp = findViewById(R.id.tvTimestamp);
+        tvNumLikes = findViewById(R.id.tvNumLikes);
 
         Post post = Parcels.unwrap(getIntent().getParcelableExtra("Post"));
+        int numLikes = getIntent().getIntExtra("numLikes", 0);
         String username = post.getUser().getUsername();
         String descrip = post.getDescription();
         String timestamp = post.getTimeStamp();
@@ -35,8 +39,10 @@ public class DetailsActivity extends AppCompatActivity {
 
         tvUsername.setText(username);
         Glide.with(this).load(image.getUrl()).into(ivImage);
-        tvDescription.setText("@"+username+" "+descrip);
+        String description = "<b>" + username + "</b> " + descrip;
+        tvDescription.setText(Html.fromHtml(description));
         tvTimestamp.setText(timestamp);
+        tvNumLikes.setText(numLikes + " likes");
 
 
     }

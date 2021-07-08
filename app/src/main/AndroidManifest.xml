@@ -21,7 +21,8 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.Parstagram">
-        <activity android:name=".DetailsActivity"></activity>
+        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".DetailsActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

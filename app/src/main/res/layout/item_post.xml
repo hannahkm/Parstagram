@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -13,29 +14,102 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:textColor="@color/light_gray"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         tools:text="\@username" />
 
     <com.parse.ui.widget.ParseImageView
         android:id="@+id/ivImage"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
         android:layout_below="@+id/tvUsername"
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
         tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="390dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tvNumLikes"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/light_gray"
+        android:textSize="16sp"
+        tools:text="\@username this is a caption for my post :)" />
+
+    <ImageView
+        android:id="@+id/ivLike"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/ivImage"
         android:layout_alignParentStart="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        app:tint="@color/light_gray"
+        app:srcCompat="@drawable/heart_stroke" />
+
+    <ImageView
+        android:id="@+id/ivComment"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/ivImage"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/ivLike"
+        app:tint="@color/light_gray"
+        app:srcCompat="@drawable/comment" />
+
+    <ImageView
+        android:id="@+id/ivSend"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/ivImage"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/ivComment"
+        app:srcCompat="@drawable/direct"
+        app:tint="@color/light_gray" />
+
+    <ImageView
+        android:id="@+id/ivSave"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/ivImage"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:srcCompat="@drawable/save"
+        app:tint="@color/light_gray" />
+
+    <ImageView
+        android:id="@+id/ivOptions"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/ivImage"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="265dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toEndOf="@+id/tvUsername"
+        android:rotation="90"
+        app:srcCompat="@drawable/options"
+        app:tint="@color/light_gray" />
+
+    <TextView
+        android:id="@+id/tvNumLikes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivSend"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="false"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:textColor="@color/light_gray"
-        tools:text="\@username this is a caption for my post :)" />
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="10000 likes" />
 </RelativeLayout>

@@ -86,9 +86,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void logout(View v){
-        ParseUser.logOut();
-        Intent i = new Intent(MainActivity.this, LoginActivity.class);
+    public void userPage(View v){
+        Intent i = new Intent(MainActivity.this, ProfileActivity.class);
         startActivity(i);
     }
 
