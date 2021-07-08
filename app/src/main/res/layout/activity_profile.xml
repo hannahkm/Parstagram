@@ -69,9 +69,9 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="28dp"
         android:onClick="changePfp"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/ic_pfp"
-        tools:src="@drawable/ic_pfp"
-        app:tint="@color/light_gray"/>
+        tools:src="@drawable/ic_pfp"/>
 
     <TextView
         android:id="@+id/tvProfileName"
@@ -85,15 +85,25 @@
         android:textSize="24sp"
         tools:text="hannah" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvUserPosts"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipeContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:layout_above="@+id/view"
         android:layout_below="@+id/ivPfp"
-        android:layout_alignParentStart="true"
-        android:padding="8dp"
-        android:paddingBottom="50dp" />
+        android:layout_height="660dp"
+        android:paddingBottom="50dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvUserPosts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:padding="8dp" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
     <TextView
         android:id="@+id/btLogOut"
