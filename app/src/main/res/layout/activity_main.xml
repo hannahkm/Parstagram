@@ -4,78 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_gray"
     tools:context=".MainActivity">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/swipeContainer"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="660dp"
-        android:paddingBottom="50dp">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/menu_bottom_navigation" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPosts"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:padding="8dp"/>
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-    <View
-        android:id="@+id/view"
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:layout_alignBottom="@id/swipeContainer"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:background="@color/black" />
-
-    <ImageButton
-        android:id="@+id/btUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="0dp"
-        android:layout_toEndOf="@+id/btPost"
-        android:background="#00FFFFFF"
-        android:onClick="userPage"
-        android:scaleX="0.6"
-        android:scaleY="0.6"
-        app:srcCompat="@drawable/user_outline"
-        app:tint="#FFFFFF" />
-
-    <ImageButton
-        android:id="@+id/btHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="46dp"
-        android:background="#00FFFFFF"
-        android:scaleX="0.5"
-        android:scaleY="0.5"
-        app:srcCompat="@drawable/home_outline"
-        app:tint="#FFFFFF" />
-
-    <ImageButton
-        android:id="@+id/btPost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginBottom="0dp"
-        android:layout_toEndOf="@+id/btHome"
-        android:background="#00FFFFFF"
-        android:onClick="newPost"
-        android:scaleX="0.5"
-        android:scaleY="0.5"
-        app:srcCompat="@drawable/new_post_outline"
-        app:tint="#FFFFFF" />
+        android:layout_height="match_parent">
+    </FrameLayout>
 
 </RelativeLayout>

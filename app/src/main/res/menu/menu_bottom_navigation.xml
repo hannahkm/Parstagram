@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/btHome"
+        android:title="dashboard"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:icon="@drawable/home_outline"
+        android:enabled="true"
+        app:showAsAction="always"
+        app:tint="@color/dark_gray" />
+
+    <item
+        android:id="@+id/btPost"
+        android:title="new post"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:icon="@drawable/new_post_outline"
+        android:enabled="true"
+        app:showAsAction="always"
+        app:tint="@color/dark_gray"/>
+
+    <item
+        android:id="@+id/btUser"
+        android:title="profile"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:icon="@drawable/user_outline"
+        android:enabled="true"
+        app:showAsAction="always"
+        app:tint="@color/dark_gray" />
+
+</menu>

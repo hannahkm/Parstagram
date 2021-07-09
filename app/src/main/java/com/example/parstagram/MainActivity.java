@@ -1,6 +1,9 @@
 package com.example.parstagram;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -8,9 +11,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -31,68 +36,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btUser = findViewById(R.id.btUser);
-        rvPosts = findViewById(R.id.rvPosts);
+        final FragmentManager fragmentManager = getSupportFragmentManager();
+        final Fragment homeFragment = new DashboardFragment();
+        final Fragment postFragment = new NewPostFragment();
+        final Fragment userFragment = new UserProfileFragment();
 
-        feedPosts = new ArrayList<>();
-        adapter = new PostsAdapter(this, feedPosts);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
 
-        rvPosts.setAdapter(adapter);
-        rvPosts.setLayoutManager(new LinearLayoutManager(this));
-
-        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
-        // Setup refresh listener which triggers new data loading
-        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onRefresh() {
-                // Your code to refresh the list here.
-                // Make sure you call swipeContainer.setRefreshing(false)
-                // once the network request has completed successfully.
-                fetchTimelineAsync(0);
-            }
-        });
-
-        queryPosts();
-    }
-
-    public void fetchTimelineAsync(int page) {
-        // reset the timeline with most recent 20 posts
-        adapter.clear();
-        queryPosts();
-        swipeContainer.setRefreshing(false);
-    }
-
-    private void queryPosts() {
-        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-        query.include(Post.KEY_USER);
-        // limit query to latest 20 items
-        query.setLimit(20);
-        // order posts by creation date (newest first)
-        query.addDescendingOrder("createdAt");
-        query.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> posts, ParseException e) {
-                if (e != null){
-                    Log.e("MainActivity", String.valueOf(e));
-                } else {
-                    for (Post post: posts){
-                        Log.i("MainActivity", post.getDescription());
-                    }
-                    // save received posts to list and notify adapter of new data
-                    feedPosts.addAll(posts);
-                    adapter.notifyDataSetChanged();
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragment;
+                switch (item.getItemId()) {
+                    case R.id.btHome:
+                        fragment = homeFragment;
+                        break;
+                    case R.id.btPost:
+                        fragment = postFragment;
+                        break;
+                    case R.id.btUser:
+                        fragment = userFragment;
+                        break;
+                    default: return true;
                 }
+                fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                return true;
             }
         });
-    }
 
-    public void userPage(View v){
-        Intent i = new Intent(MainActivity.this, ProfileActivity.class);
-        startActivity(i);
-    }
-
-    public void newPost(View v){
-        Intent i = new Intent(MainActivity.this, NewPostActivity.class);
-        startActivity(i);
+        bottomNavigationView.setSelectedItemId(R.id.btHome);
     }
 }

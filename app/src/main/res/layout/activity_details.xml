@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_gray"
     tools:context=".DetailsActivity">
 
     <TextView
@@ -15,7 +14,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:textColor="@color/light_gray"
         android:textSize="20sp"
         android:textStyle="bold"
         tools:text="\@username" />
@@ -39,7 +37,6 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:textColor="@color/light_gray"
         android:textSize="16sp"
         tools:text="\@username this is a caption for my post :)" />
 
@@ -51,7 +48,6 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        app:tint="@color/light_gray"
         app:srcCompat="@drawable/heart_stroke" />
 
     <ImageView
@@ -62,7 +58,6 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/ivLike"
-        app:tint="@color/light_gray"
         app:srcCompat="@drawable/comment" />
 
     <ImageView
@@ -73,8 +68,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/ivComment"
-        app:srcCompat="@drawable/direct"
-        app:tint="@color/light_gray" />
+        app:srcCompat="@drawable/direct" />
 
     <ImageView
         android:id="@+id/ivSave"
@@ -84,8 +78,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        app:srcCompat="@drawable/save"
-        app:tint="@color/light_gray" />
+        app:srcCompat="@drawable/save"/>
 
     <ImageView
         android:id="@+id/ivOptions"
@@ -98,8 +91,7 @@
         android:layout_marginEnd="10dp"
         android:layout_toEndOf="@+id/tvUsername"
         android:rotation="90"
-        app:srcCompat="@drawable/options"
-        app:tint="@color/light_gray" />
+        app:srcCompat="@drawable/options"/>
 
     <TextView
         android:id="@+id/tvNumLikes"
@@ -110,7 +102,6 @@
         android:layout_alignParentBottom="false"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:textColor="@color/light_gray"
         android:textSize="16sp"
         android:textStyle="bold"
         tools:text="10000 likes" />
@@ -123,6 +114,5 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:textColor="@color/light_gray"
         tools:text="2 days ago" />
 </RelativeLayout>
