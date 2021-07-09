@@ -48,13 +48,7 @@ public class Post extends ParseObject {
     public int getNumLikes(){
         // returns number of likes (or else return 0)
         int likes = getInt(KEY_LIKES);
-        if (likes == 0){
-            int num_likes = (int)Math.floor(Math.random()*(101)+1);
-            put(KEY_LIKES, num_likes);
-            return num_likes;
-        } else {
-            return likes;
-        }
+        return likes;
     }
 
     public String getTimeStamp() {

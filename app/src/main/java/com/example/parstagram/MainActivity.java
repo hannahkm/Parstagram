@@ -25,11 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    ImageButton btUser;
-    private RecyclerView rvPosts;
-    PostsAdapter adapter;
-    List<Post> feedPosts;
-    private SwipeRefreshLayout swipeContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

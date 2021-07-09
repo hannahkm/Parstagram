@@ -21,7 +21,6 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.Parstagram">
-        <activity android:name=".ProfileActivity"></activity>
         <activity android:name=".DetailsActivity" />
 
         <provider
@@ -34,7 +33,6 @@
                 android:resource="@xml/fileprovider" />
         </provider>
 
-        <activity android:name=".NewPostActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
