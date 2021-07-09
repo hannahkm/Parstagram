@@ -131,12 +131,6 @@ public class ProfileActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void logout(View v){
-        ParseUser.logOut();
-        Intent i = new Intent(ProfileActivity.this, LoginActivity.class);
-        startActivity(i);
-    }
-
     public void changePfp(View v){
         // create (implicit) Intent to take a picture and return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

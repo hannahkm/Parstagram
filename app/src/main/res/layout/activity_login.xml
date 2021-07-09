@@ -10,7 +10,8 @@
         android:id="@+id/welcomeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
+        android:layout_below="@+id/ivLandingLogo"
+        android:layout_marginTop="20dp"
         android:text="Welcome to Parstagram!"
         android:textAlignment="center"
         android:textSize="20sp"
@@ -63,4 +64,14 @@
         android:layout_marginTop="10dp"
         android:onClick="SignUp"
         android:text="Sign Up" />
+
+    <ImageView
+        android:id="@+id/ivLandingLogo"
+        android:layout_width="231dp"
+        android:layout_height="82dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="152dp"
+        app:srcCompat="@drawable/landing_logo_black"
+        tools:srcCompat="@drawable/landing_logo_black" />
 </RelativeLayout>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.Html;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -12,12 +13,15 @@ import com.parse.ui.widget.ParseImageView;
 
 import org.parceler.Parcels;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 public class DetailsActivity extends AppCompatActivity {
     TextView tvUsername;
     ParseImageView ivImage;
     TextView tvDescription;
     TextView tvTimestamp;
     TextView tvNumLikes;
+    ImageView ivUserPfp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,7 @@ public class DetailsActivity extends AppCompatActivity {
         tvDescription = findViewById(R.id.tvDescription);
         tvTimestamp = findViewById(R.id.tvTimestamp);
         tvNumLikes = findViewById(R.id.tvNumLikes);
+        ivUserPfp = findViewById(R.id.ivUserPfp);
 
         Post post = Parcels.unwrap(getIntent().getParcelableExtra("Post"));
         int numLikes = getIntent().getIntExtra("numLikes", 0);
@@ -43,6 +48,11 @@ public class DetailsActivity extends AppCompatActivity {
         tvDescription.setText(Html.fromHtml(description));
         tvTimestamp.setText(timestamp);
         tvNumLikes.setText(numLikes + " likes");
+
+        ParseFile currentPfp = ((ParseFile) post.getUser().get("profileImage"));
+        if (currentPfp != null){
+            Glide.with(this).load(currentPfp.getUrl()).circleCrop().into(ivUserPfp);
+        }
 
 
     }

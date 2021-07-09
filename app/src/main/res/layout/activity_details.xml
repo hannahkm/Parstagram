@@ -10,10 +10,11 @@
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/ivUserPfp"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         tools:text="\@username" />
@@ -38,6 +39,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:textSize="16sp"
+        android:textColor="@color/black"
         tools:text="\@username this is a caption for my post :)" />
 
     <ImageView
@@ -86,12 +88,12 @@
         android:layout_height="30dp"
         android:layout_above="@+id/ivImage"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="265dp"
+        android:layout_marginStart="205dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_toEndOf="@+id/tvUsername"
         android:rotation="90"
-        app:srcCompat="@drawable/options"/>
+        app:srcCompat="@drawable/options" />
 
     <TextView
         android:id="@+id/tvNumLikes"
@@ -104,6 +106,7 @@
         android:layout_marginTop="5dp"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         tools:text="10000 likes" />
 
     <TextView
@@ -114,5 +117,17 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
+        android:textColor="@color/black"
         tools:text="2 days ago" />
+
+    <ImageView
+        android:id="@+id/ivUserPfp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@drawable/ic_pfp" />
 </RelativeLayout>

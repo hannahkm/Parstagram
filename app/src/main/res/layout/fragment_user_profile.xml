@@ -36,6 +36,7 @@
         android:layout_marginTop="50dp"
         android:layout_toEndOf="@+id/ivPfp"
         android:textSize="24sp"
+        android:textColor="@color/black"
         tools:text="hannah" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -64,7 +65,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_toEndOf="@+id/ivPfp"
-        android:onClick="logout"
+        android:textColor="@color/blue"
         android:text="Log Out"/>
 
 </RelativeLayout>

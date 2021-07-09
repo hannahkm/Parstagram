@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -221,6 +222,10 @@ public class NewPostFragment extends Fragment {
                 }
             }
         });
+
         // send user back to main screen
+        final FragmentManager fragmentManager = getFragmentManager();
+        Fragment fragment = new DashboardFragment();
+        fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit();
     }
 }

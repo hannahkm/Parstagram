@@ -48,6 +48,7 @@ public class UserProfileFragment extends Fragment {
     List<Post> posts;
     GridPostAdapter adapter;
     TextView tvProfileName;
+    TextView tvLogout;
     ParseUser currentUser;
     ImageView ivPfp;
     SwipeRefreshLayout swipeContainer;
@@ -100,10 +101,20 @@ public class UserProfileFragment extends Fragment {
         tvProfileName = view.findViewById(R.id.tvProfileName);
         tvProfileName.setText(currentUser.getUsername());
 
+        tvLogout = view.findViewById(R.id.btLogOut);
+        tvLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseUser.logOut();
+                Intent i = new Intent(context, LoginActivity.class);
+                startActivity(i);
+            }
+        });
+
         ivPfp = view.findViewById(R.id.ivPfp);
         ParseFile currentPfp = ((ParseFile) currentUser.get("profileImage"));
         if (currentPfp != null){
-            Glide.with(context).load(currentPfp.getUrl()).transform(new RoundedCornersTransformation(100, 0)).into(ivPfp);
+            Glide.with(context).load(currentPfp.getUrl()).circleCrop().into(ivPfp);
         }
 
         swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
@@ -197,7 +208,7 @@ public class UserProfileFragment extends Fragment {
                         if (e == null){
                             Log.i("Updating pfp", "hello updated");
                             Toast.makeText(context, "Your profile picture has been updated", Toast.LENGTH_SHORT).show();
-                            Glide.with(context).load(newPfp.getUrl()).transform(new RoundedCornersTransformation(100, 0)).into(ivPfp);
+                            Glide.with(context).load(newPfp.getUrl()).circleCrop().into(ivPfp);
 //                            ivPfp.setImageBitmap(rawTakenImage);
                         } else {
                             Log.e("Updating pfp", String.valueOf(e));

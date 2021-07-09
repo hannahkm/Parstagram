@@ -50,6 +50,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/blue"
+        android:textColor="@color/white"
         android:text="Post" />
 
     <ImageView
