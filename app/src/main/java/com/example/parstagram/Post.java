@@ -46,8 +46,8 @@ public class Post extends ParseObject {
     }
 
     public int getNumLikes(){
+        // returns number of likes (or else return 0)
         int likes = getInt(KEY_LIKES);
-        Log.i("likes", String.valueOf(likes));
         if (likes == 0){
             int num_likes = (int)Math.floor(Math.random()*(101)+1);
             put(KEY_LIKES, num_likes);
@@ -58,6 +58,7 @@ public class Post extends ParseObject {
     }
 
     public String getTimeStamp() {
+        // grab the date the post was made and calculate time since that date
         Date createdAt = this.getCreatedAt();
 
         int SECOND_MILLIS = 1000;
@@ -87,7 +88,7 @@ public class Post extends ParseObject {
                 return diff / DAY_MILLIS + " d";
             }
         } catch (Exception e) {
-            Log.i("Error:", "getRelativeTimeAgo failed", e);
+            Log.e("Error:", "getRelativeTimeAgo failed", e);
             e.printStackTrace();
         }
 

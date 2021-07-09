@@ -39,8 +39,7 @@ public class DashboardFragment extends Fragment {
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
-    public static DashboardFragment newInstance(String param1, String param2) {
+    public static DashboardFragment newInstance() {
         DashboardFragment fragment = new DashboardFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
@@ -78,9 +77,7 @@ public class DashboardFragment extends Fragment {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                // Your code to refresh the list here.
-                // Make sure you call swipeContainer.setRefreshing(false)
-                // once the network request has completed successfully.
+                // refreshes the user's timeline
                 fetchTimelineAsync(0);
             }
         });
@@ -108,9 +105,6 @@ public class DashboardFragment extends Fragment {
                 if (e != null){
                     Log.e("MainActivity", String.valueOf(e));
                 } else {
-                    for (Post post: posts){
-                        Log.i("MainActivity", post.getDescription());
-                    }
                     // save received posts to list and notify adapter of new data
                     feedPosts.addAll(posts);
                     adapter.notifyDataSetChanged();

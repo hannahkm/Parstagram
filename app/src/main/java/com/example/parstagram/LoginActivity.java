@@ -58,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void SignUp(View v){
+        // allow the user to sign up for Parstagram
         Intent i = new Intent(LoginActivity.this, SignUpActivity.class);
         startActivity(i);
     }

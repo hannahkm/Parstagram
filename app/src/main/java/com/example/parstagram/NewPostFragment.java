@@ -52,33 +52,14 @@ public class NewPostFragment extends Fragment {
     public String photoFileName = "photo.jpg";
     private File photoFile;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-//    private String mParam1;
-//    private String mParam2;
-
     public NewPostFragment() {
         // Required empty public constructor
     }
 
-//    /**
-//     * Use this factory method to create a new instance of
-//     * this fragment using the provided parameters.
-//     *
-//     * @param param1 Parameter 1.
-//     * @param param2 Parameter 2.
-//     * @return A new instance of fragment NewPostFragment.
-//     */
     // TODO: Rename and change types and number of parameters
     public static NewPostFragment newInstance() {
         NewPostFragment fragment = new NewPostFragment();
         Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -86,10 +67,6 @@ public class NewPostFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
 
     }
 
@@ -110,6 +87,7 @@ public class NewPostFragment extends Fragment {
         camera = view.findViewById(R.id.ivCamera);
         btnMakePost = view.findViewById(R.id.btnMakePost);
 
+        // open phone's camera
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,6 +97,7 @@ public class NewPostFragment extends Fragment {
             }
         });
 
+        // user posts their creation
         btnMakePost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,7 +117,6 @@ public class NewPostFragment extends Fragment {
     }
 
     private void launchCamera() {
-        Log.i("NewPostActivity", "hello camera");
         // create (implicit) Intent to take a picture and return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         photoFile = getPhotoFileUri(photoFileName);
@@ -161,15 +139,13 @@ public class NewPostFragment extends Fragment {
                 // by this point we have the camera photo on disk
                 Bitmap rawTakenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
 
-                // See BitmapScaler.java: https://gist.github.com/nesquena/3885707fd3773c09f1bb
                 Bitmap resizedBitmap = BitmapScaler.scaleToFitWidth(rawTakenImage, 500);
 
-                // Configure byte output stream
+                // Configure byte output stream and compress image
                 ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                // Compress the image further
                 resizedBitmap.compress(Bitmap.CompressFormat.JPEG, 40, bytes);
-                // Create a new file for the resized bitmap (`getPhotoFileUri` defined above)
                 File resizedFile = getPhotoFileUri(photoFileName + "_resized");
+
                 try {
                     resizedFile.createNewFile();
                     FileOutputStream fos = new FileOutputStream(resizedFile);
@@ -210,6 +186,9 @@ public class NewPostFragment extends Fragment {
         post.setDescription(description);
         post.setUser(user);
         post.setImage(new ParseFile(photoFile));
+        post.put("numLikes", 0);
+
+        // update post and save it to Parse
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {

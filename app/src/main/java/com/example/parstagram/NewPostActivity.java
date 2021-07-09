@@ -49,6 +49,7 @@ public class NewPostActivity extends AppCompatActivity {
         camera = findViewById(R.id.ivCamera);
         btnMakePost = findViewById(R.id.btnMakePost);
 
+        // launches camera when user selects the camera
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +59,7 @@ public class NewPostActivity extends AppCompatActivity {
             }
         });
 
+        // user posts their creation
         btnMakePost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +79,6 @@ public class NewPostActivity extends AppCompatActivity {
     }
 
     private void launchCamera() {
-        Log.i("NewPostActivity", "hello camera");
         // create (implicit) Intent to take a picture and return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         photoFile = getPhotoFileUri(photoFileName);
@@ -100,15 +101,13 @@ public class NewPostActivity extends AppCompatActivity {
                 // by this point we have the camera photo on disk
                 Bitmap rawTakenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
 
-                // See BitmapScaler.java: https://gist.github.com/nesquena/3885707fd3773c09f1bb
                 Bitmap resizedBitmap = BitmapScaler.scaleToFitWidth(rawTakenImage, 500);
 
-                // Configure byte output stream
+                // Configure byte output stream and compress image
                 ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                // Compress the image further
                 resizedBitmap.compress(Bitmap.CompressFormat.JPEG, 40, bytes);
-                // Create a new file for the resized bitmap (`getPhotoFileUri` defined above)
                 File resizedFile = getPhotoFileUri(photoFileName + "_resized");
+
                 try {
                     resizedFile.createNewFile();
                     FileOutputStream fos = new FileOutputStream(resizedFile);
@@ -149,6 +148,8 @@ public class NewPostActivity extends AppCompatActivity {
         post.setDescription(description);
         post.setUser(user);
         post.setImage(new ParseFile(photoFile));
+
+        // set the post's parameters and then save to Parse
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {

@@ -64,7 +64,7 @@ public class UserProfileFragment extends Fragment {
     }
 
     // TODO: Rename and change types and number of parameters
-    public static UserProfileFragment newInstance(String param1, String param2) {
+    public static UserProfileFragment newInstance() {
         UserProfileFragment fragment = new UserProfileFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);

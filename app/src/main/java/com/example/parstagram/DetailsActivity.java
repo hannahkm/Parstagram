@@ -35,6 +35,7 @@ public class DetailsActivity extends AppCompatActivity {
         tvNumLikes = findViewById(R.id.tvNumLikes);
         ivUserPfp = findViewById(R.id.ivUserPfp);
 
+        // grabbing all important information from Parcelled post variable
         Post post = Parcels.unwrap(getIntent().getParcelableExtra("Post"));
         int numLikes = getIntent().getIntExtra("numLikes", 0);
         String username = post.getUser().getUsername();
@@ -49,6 +50,7 @@ public class DetailsActivity extends AppCompatActivity {
         tvTimestamp.setText(timestamp);
         tvNumLikes.setText(numLikes + " likes");
 
+        // if the user has set a profile picture, display it. Else, display default image
         ParseFile currentPfp = ((ParseFile) post.getUser().get("profileImage"));
         if (currentPfp != null){
             Glide.with(this).load(currentPfp.getUrl()).circleCrop().into(ivUserPfp);

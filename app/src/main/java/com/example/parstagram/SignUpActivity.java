@@ -29,6 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void SignUp(View v){
+        // user inputs username, password, and email to sign up
         String username = String.valueOf(etUsername.getText());
         String password = String.valueOf(etPassword.getText());
         String email = String.valueOf(etEmail.getText());
@@ -38,7 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
         user.setPassword(password);
         user.setEmail(email);
 
-        // Invoke signUpInBackground
+        // Invoke signUpInBackground - adds user to Parse
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e == null) {

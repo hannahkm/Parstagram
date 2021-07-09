@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // set up fragment manager to switch between pages
         final FragmentManager fragmentManager = getSupportFragmentManager();
         final Fragment homeFragment = new DashboardFragment();
         final Fragment postFragment = new NewPostFragment();
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
 
+        // switch to appropriate fragment onClick in the navigation view
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // sets the default page (the dashboard)
         bottomNavigationView.setSelectedItemId(R.id.btHome);
     }
 }
