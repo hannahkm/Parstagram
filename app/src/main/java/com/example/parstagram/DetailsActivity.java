@@ -22,6 +22,7 @@ public class DetailsActivity extends AppCompatActivity {
     TextView tvTimestamp;
     TextView tvNumLikes;
     ImageView ivUserPfp;
+    ImageView ivLike;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class DetailsActivity extends AppCompatActivity {
         tvTimestamp = findViewById(R.id.tvTimestamp);
         tvNumLikes = findViewById(R.id.tvNumLikes);
         ivUserPfp = findViewById(R.id.ivUserPfp);
+        ivLike = findViewById(R.id.ivLike);
 
         // grabbing all important information from Parcelled post variable
         Post post = Parcels.unwrap(getIntent().getParcelableExtra("Post"));
@@ -54,6 +56,10 @@ public class DetailsActivity extends AppCompatActivity {
         ParseFile currentPfp = ((ParseFile) post.getUser().get("profileImage"));
         if (currentPfp != null){
             Glide.with(this).load(currentPfp.getUrl()).circleCrop().into(ivUserPfp);
+        }
+
+        if (post.getBoolean("liked")) {
+            ivLike.setImageResource(R.drawable.heart_active);
         }
 
 

@@ -148,6 +148,10 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             if (currentPfp != null){
                 Glide.with(context).load(currentPfp.getUrl()).override(100, 100).circleCrop().into(ivUserPfp);
             }
+
+            if (post.getBoolean("liked")) {
+                ivLike.setImageResource(R.drawable.heart_active);
+            }
         }
     }
 }

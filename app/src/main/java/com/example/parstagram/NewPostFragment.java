@@ -187,6 +187,7 @@ public class NewPostFragment extends Fragment {
         post.setUser(user);
         post.setImage(new ParseFile(photoFile));
         post.put("numLikes", 0);
+        post.put("liked", false);
 
         // update post and save it to Parse
         post.saveInBackground(new SaveCallback() {
